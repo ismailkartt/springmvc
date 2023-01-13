@@ -2,18 +2,23 @@ package com.tpe.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
-//@Entity
-//@Table(name = "t_student")
+@Entity
+@Table(name = "t_student")
 public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "İsim kısmı boş olamaz")
     private String firstName;
+    @NotEmpty(message = "Soy-isim kısmı boş olamaz")
     private String lastName;
+    @NotNull(message = "Lütfen puan bilgisini giriniz")
     private Integer grade;
 
     private LocalDateTime createDate = LocalDateTime.now();
